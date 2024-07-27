@@ -1,6 +1,7 @@
 /* App.css */
 body {
     scroll-behavior: smooth;
+
   }
   
   .user-icon, .notification-icon {
@@ -73,3 +74,8 @@ body {
       transform: rotate(360deg);
     }
   }
+
+  .no-margin {
+    margin-bottom: 0 !important; /* Force no margin */
+}
+

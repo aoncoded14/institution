@@ -1,40 +1,62 @@
-
-import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
-import { Link } from 'react-scroll';
-import { FaUser, FaBell } from 'react-icons/fa';
-import "../styles/navbar1.css"; // Import your custom CSS
+import { FaUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom"; // Ensure you're using React Router
 
 const Navbar1 = () => {
   return (
-    <Navbar bg="light" expand="lg" fixed="top">
-      <Container>
-        <Navbar.Brand href="#" className="mx-auto"><strong>ISTM</strong></Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="home" smooth={true} duration={500}>Home</Nav.Link>
-            <Nav.Link as={Link} to="about" smooth={true} duration={500}>About Us</Nav.Link>
-            <Nav.Link as={Link} to="services" smooth={true} duration={500}>Our Services</Nav.Link>
-            <Nav.Link as={Link} to="blog" smooth={true} duration={500}>Blog</Nav.Link>
-          </Nav>
-          <Nav>
-            <NavDropdown title="Menu" id="basic-nav-dropdown" className="ms-auto">
-              <NavDropdown.Item href="#user"><FaUser /> Profile</NavDropdown.Item>
-              <NavDropdown.Item href="#notifications"><FaBell /> Notifications</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item as={Link} to="home" smooth={true} duration={500}>Home</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="about" smooth={true} duration={500}>About Us</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="services" smooth={true} duration={500}>Our Services</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="blog" smooth={true} duration={500}>Blog</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <nav className="navbar navbar-expand-lg bg-light mb-0" style={{ position: "relative", zIndex: 1000 }} data-bs-theme="light">
+      <div className="container-fluid">
+        <Link className="navbar-brand fw-bold" to="/">ISTM</Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarColor03"
+          aria-controls="navbarColor03"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarColor03">
+          <ul className="navbar-nav me-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/api/about">About Us</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/api/services">Our Services</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/api/blog">Blog</Link>
+            </li>
+          </ul>
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <FaUserCircle size={24} />
+              </a>
+              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style={{ zIndex: 1100 }}>
+                <li><Link className="dropdown-item" to="/api/dashboard">Dashboard</Link></li>
+                <li><Link className="dropdown-item" to="/profile">Profile</Link></li>
+                <li><a className="dropdown-item" href="/api/userSettings">Settings</a></li>
+                <li><a className="dropdown-item" href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 };
 
 export default Navbar1;
-
-
-

@@ -1,0 +1,29 @@
+.courses-page {
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .courses-page h1 {
+    color: #007bff;
+  }
+  
+  .courses-page h2 {
+    color: #343a40;
+  }
+  
+  .courses-page .card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .courses-page .card img {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .courses-page .card-title {
+    color: #007bff;
+  }
+  

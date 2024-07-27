@@ -1,8 +1,11 @@
 /* Custom styles for Navbar */
 .navbar-brand {
-  position: absolute;
+  position: fixed;
   left: 50%;
   transform: translateX(-50%);
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 @media (max-width: 991px) {
