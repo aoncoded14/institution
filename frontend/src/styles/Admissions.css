@@ -1,0 +1,22 @@
+.admissions-page {
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admissions-content {
+    text-align: center;
+  }
+  
+  .admissions-content h1 {
+    color: #007bff;
+  }
+  
+  .admissions-content p {
+    color: #6c757d;
+  }
+  
+  .admissions-page img {
+    border-radius: 15px;
+  }
+  

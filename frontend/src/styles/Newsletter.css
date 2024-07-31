@@ -1,0 +1,30 @@
+/* Newsletter.css */
+.newsletter-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../assets/svgs/newsletter.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 50px 20px; /* Adjust the padding to control the section size */
+    text-align: center;
+  }
+  
+  .content-container {
+    background: rgba(0, 0, 0, 0.6); /* Adding a dark overlay to make the text stand out */
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .newsletter-section .form-control {
+    margin-bottom: 10px;
+  }
+  
+  .newsletter-section button {
+    width: 100%;
+  }
+  
