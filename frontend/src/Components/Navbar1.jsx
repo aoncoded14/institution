@@ -49,7 +49,7 @@ const Navbar1 = () => {
                 <li><Link className="dropdown-item" to="/api/dashboard">Dashboard</Link></li>
                 <li><Link className="dropdown-item" to="/profile">Profile</Link></li>
                 <li><a className="dropdown-item" href="/api/userSettings">Settings</a></li>
-                <li><a className="dropdown-item" href="#">Logout</a></li>
+                <li><Link className="dropdown-item" to="/api/logout">Logout</Link></li>
               </ul>
             </li>
           </ul>
