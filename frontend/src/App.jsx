@@ -14,17 +14,17 @@ import Services from "./Pages/Services";
 import UserSettings from "./Pages/Usersettings";
 import Coursespage from "./Pages/Coursespage.jsx";
 import NotFound from "./Pages/NotFound";
-import ProtectedRoute from "./Components/ProtectedRoute";
+//import ProtectedRoute from "./Components/ProtectedRoute";
 
 function Logout() {
   localStorage.clear()
   return <Navigate to="/login" />
 }
 
-function RegisterAndLogout() {
+ {/* function RegisterAndLogout() {
   localStorage.clear()
   return <Signup />
-}
+}*/}
 
 
 
@@ -34,7 +34,22 @@ const App = () => {
     <>
       <Navbar1 />
       <Routes>
-        <Route
+      <Route path='/' element={<Home />} />
+      <Route path='/login' element={<Login />} />
+        <Route path='/api/about' element={<About />} />
+        <Route path='/api/admissions' element={<Admissions />} />
+        <Route path='/api/blog' element={<Blog />} />
+        <Route path='/api/library' element={<Library />} />
+        <Route path='/api/printing' element={<Printing />} />
+        <Route path='/api/dashboard' element={<Dashboard />} />
+        <Route path='/api/signup' element={<Signup />} />
+        <Route path='/api/services' element={<Services />} />
+        <Route path='/api/userSettings' element={<UserSettings />} />
+        <Route path='/api/coursespage' element={<Coursespage />} />
+        <Route path='/api/notfound' element={<NotFound />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="*" element={<NotFound />}></Route>
+        {/*<Route
           path="/"
           element={
             <ProtectedRoute>
@@ -42,9 +57,10 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/api/login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="api/register" element={<RegisterAndLogout />} />
+        <Route path="/register" element={<Signup />} />
+         {/*<Route path="register" element={<RegisterAndLogout />} /> */}
         <Route path="*" element={<NotFound />}></Route>
         {/* <Route
             path="/"

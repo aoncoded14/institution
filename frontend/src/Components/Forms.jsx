@@ -5,10 +5,10 @@ import { Form, Button, Container } from "react-bootstrap";
 import { REFRESH_TOKEN, ACCESS_TOKEN } from "../constants";
 import { Link } from "react-router-dom";
 import "../styles/Forms.css";
-//import LoadingIndicator from "./LoadingIndicator";
+import LoadingIndicator from "./LoadingIndicator";
 
 function Forms({ route, method }) {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -16,19 +16,20 @@ function Forms({ route, method }) {
   const name = method === "login" ? "Login" : "SignUp";
 
   const handleSubmit = async (e) => {
-    setLoading(true);
     e.preventDefault();
+    setLoading(true);
     try {
-      const res = await api.post(route, { email, password });
+      const res = await api.post(route, { username, password });
       if (method === "login") {
         localStorage.setItem(ACCESS_TOKEN, res.data.access);
         localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
         navigate("/");
       } else {
-        navigate("/api/login");
+        navigate("/login");
       }
     } catch (error) {
-      alert(error);
+      // Assuming `error.response.data` has a user-friendly message
+      alert(error.response ? error.response.data.detail : "An error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -39,13 +40,14 @@ function Forms({ route, method }) {
       <Container className="forms-form">
         <h2>{name}</h2>
         <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+          <Form.Group controlId="formBasicUsername">
+            <Form.Label>Username</Form.Label>
             <Form.Control
-              type="email"
-              placeholder="Enter email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"  // Changed from 'email' to 'text' assuming you need a username
+              placeholder="Enter username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
             />
           </Form.Group>
 
@@ -56,20 +58,22 @@ function Forms({ route, method }) {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
-            {name}
+          <Button variant="primary" type="submit" disabled={loading}>
+            {loading ? <LoadingIndicator /> : name}
           </Button>
+
           <p className="mt-3">
             {method === "login" ? (
               <span>
-                Don't have an account? <Link to="/api/register">SignUp</Link>
+                Don't have an account? <Link to="/register">SignUp</Link>
               </span>
             ) : (
               <span>
-                Already have an account? <Link to="/api/login">Login</Link>
+                Already have an account? <Link to="/login">Login</Link>
               </span>
             )}
           </p>
